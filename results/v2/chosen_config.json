@@ -1,0 +1,26 @@
+{
+  "lear_w": {},
+  "lgbm_w": {
+    "n_estimators": 600
+  },
+  "linear_w": {
+    "alpha": 1000
+  },
+  "esn_w": {
+    "alpha": 300,
+    "rho": 0.5,
+    "leak": 0.3
+  },
+  "lear_nw": {},
+  "lgbm_nw": {
+    "n_estimators": 300
+  },
+  "linear_nw": {
+    "alpha": 100
+  },
+  "esn_nw": {
+    "alpha": 100,
+    "rho": 0.9,
+    "leak": 1.0
+  }
+}

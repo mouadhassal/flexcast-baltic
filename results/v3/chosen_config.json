@@ -1,0 +1,11 @@
+{
+  "ridge_raw_w": {
+    "alpha": 100
+  },
+  "spo_w": {
+    "alpha": 100,
+    "lr": 0.03,
+    "epochs": 10,
+    "mu": 0.05
+  }
+}

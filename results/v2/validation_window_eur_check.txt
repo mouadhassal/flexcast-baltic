@@ -1,0 +1,7 @@
+ensemble_w   MAE  32.57 capture  67.8%  EUR    37988
+ensemble_nw  MAE  37.45 capture  68.3%  EUR    38270
+profile      MAE  55.44 capture  62.6%  EUR    35079
+naive_d1     MAE  53.66 capture  50.6%  EUR    28352
+ensemble_w minus profile EUR/day [15.98, 3.98, 25.4]
+ensemble_nw minus profile EUR/day [17.53, 6.54, 26.5]
+perfect foresight EUR 56033 days 182

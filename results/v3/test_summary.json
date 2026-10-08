@@ -1,0 +1,40 @@
+{
+  "preregistration_v3_sha256": "ed1fc150a360f04d7b5084939957357a2cfc35493c67cc9e5ab1c0ebcde01616",
+  "test_window": [
+    "2026-04-01",
+    "2026-10-08"
+  ],
+  "chosen_config": {
+    "ridge_raw_w": {
+      "alpha": 100
+    },
+    "spo_w": {
+      "alpha": 100,
+      "lr": 0.03,
+      "epochs": 10,
+      "mu": 0.05
+    }
+  },
+  "hypotheses": {
+    "P1_eur_per_day_spo_minus_ridge_raw": {
+      "mean": 6.559494004353491,
+      "ci_lo": 3.5273339613976225,
+      "ci_hi": 9.612168568666693
+    },
+    "P2_eur_per_day_spo_minus_profile": {
+      "mean": -0.9373228665944261,
+      "ci_lo": -6.155852108168694,
+      "ci_hi": 3.796220549561223
+    },
+    "P3_mae_spo_minus_ridge_raw": {
+      "mean": 0.3483216429994259,
+      "ci_lo": 0.174523757267536,
+      "ci_hi": 0.5459094801366393
+    },
+    "extra_eur_per_day_spo_minus_ensemble_w": {
+      "mean": -3.2637396956832005,
+      "ci_lo": -7.781138938197689,
+      "ci_hi": 1.126650689549918
+    }
+  }
+}

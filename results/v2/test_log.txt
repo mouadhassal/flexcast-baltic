@@ -1,0 +1,71 @@
+lear_w     done
+lgbm_w     done
+linear_w   done
+esn_w      done
+lear_nw    done
+lgbm_nw    done
+linear_nw  done
+esn_nw     done
+               model   mae  rmse  profit_eur  capture_pct  losing_days
+          ensemble_w 29.31 38.75    27148.09        66.29           16
+              lgbm_w 29.42 40.22    25229.95        61.61           16
+         v1_ensemble 30.73 41.05    26629.77        65.02           13
+              lear_w 30.83 40.98    26314.22        64.25           21
+         ensemble_nw 30.92 41.28    26485.18        64.67           15
+               esn_w 31.01 40.46    27114.02        66.21           13
+            linear_w 31.35 40.23    27487.33        67.12           12
+             lear_nw 31.62 42.01    26531.83        64.78           19
+           linear_nw 31.71 41.77    26383.67        64.42           14
+              esn_nw 32.59 42.75    26340.83        64.32           17
+             lgbm_nw 33.89 45.73    22800.14        55.67           19
+trailing_28d_profile 39.91 50.24    26703.74        65.20           16
+            naive_d1 42.27 59.51    12760.11        31.16           44
+{
+  "W1_mae_gain_weather_vs_same_rows_no_weather": {
+    "mean": 1.6084413780503464,
+    "ci_lo": 0.1874776177565275,
+    "ci_hi": 2.8046628697374136
+  },
+  "W2_eur_per_day_ensemble_w_minus_profile": {
+    "mean": 2.326416829088775,
+    "ci_lo": -2.9206056453575573,
+    "ci_hi": 7.204100885558915
+  },
+  "W3_capture_pct": {
+    "ensemble_w": 66.28954805255242,
+    "v1_ensemble": 65.02393945062458,
+    "trailing_28d_profile": 65.20455550328037
+  },
+  "extra_mae_gain_vs_v1_ensemble": {
+    "mean": 1.4134022248868967,
+    "ci_lo": -0.009698661158418732,
+    "ci_hi": 2.564567750642496
+  },
+  "extra_eur_per_day_ensemble_w_minus_v1_ensemble": {
+    "mean": 2.7136897415008976,
+    "ci_lo": -1.0609620494361602,
+    "ci_hi": 6.673438926369752
+  },
+  "extra_eur_per_day_best_single_w_minus_profile": {
+    "lear_w": {
+      "mean": -2.0393750624303566,
+      "ci_lo": -7.163324435111403,
+      "ci_hi": 3.3189716824220983
+    },
+    "lgbm_w": {
+      "mean": -7.71617829156228,
+      "ci_lo": -15.693616999477477,
+      "ci_hi": -1.5123896306145894
+    },
+    "esn_w": {
+      "mean": 2.1480631827764523,
+      "ci_lo": -2.4152491102322418,
+      "ci_hi": 6.786029321520046
+    },
+    "linear_w": {
+      "mean": 4.10258509459981,
+      "ci_lo": -0.1453546981392832,
+      "ci_hi": 8.361291801165853
+    }
+  }
+}

@@ -1,0 +1,51 @@
+{
+  "preregistration_sha256": "c63dd3e17db1291cd827bcc07ad856160133b9e36809bda3587fd112fa2c98db",
+  "test_window": [
+    "2026-04-01",
+    "2026-10-08"
+  ],
+  "run_utc": "2026-10-08T23:21:06.313568+00:00",
+  "chosen_config": {
+    "naive_d1": {},
+    "naive_d7": {},
+    "lear": {},
+    "lgbm": {
+      "n_estimators": 600
+    },
+    "linear": {
+      "alpha": 1000
+    },
+    "esn": {
+      "alpha": 300,
+      "rho": 0.9,
+      "leak": 1.0
+    },
+    "pca8_linear": {
+      "alpha": 1
+    },
+    "pca8_rff": {
+      "alpha": 10,
+      "scale": 1.0
+    },
+    "pca8_qrc": {
+      "alpha": 30,
+      "tau": 0.5,
+      "h": 0.5
+    }
+  },
+  "guard": {
+    "interval_80_coverage": 0.5654450261780105,
+    "pinball_q10": 6.805456675186861,
+    "pinball_q90": 9.093322242341301,
+    "days": 191,
+    "days_flagged_idle": 191,
+    "profit_ungated_eur": 23541.60632256794,
+    "profit_gated_eur": 0.0,
+    "profit_on_flagged_days_if_traded_eur": 23541.60632256794,
+    "losing_days_ungated": 15,
+    "losing_days_gated": 0,
+    "loss_eur_ungated": -291.79754602372105,
+    "loss_eur_gated": 0.0,
+    "perfect_foresight_eur": 40953.79407481519
+  }
+}

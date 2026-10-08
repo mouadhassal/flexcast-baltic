@@ -1,0 +1,105 @@
+naive_d1     {}                                               MAE   53.66  (0s)
+naive_d7     {}                                               MAE   58.76  (0s)
+lear         {}                                               MAE   37.11  (39s)
+lgbm         {"n_estimators": 300}                            MAE   41.55  (11s)
+lgbm         {"n_estimators": 600}                            MAE   41.50  (23s)
+linear       {"alpha": 1}                                     MAE   47.26  (0s)
+linear       {"alpha": 10}                                    MAE   46.39  (0s)
+linear       {"alpha": 100}                                   MAE   45.36  (0s)
+linear       {"alpha": 1000}                                  MAE   44.86  (0s)
+linear       {"alpha": 3000}                                  MAE   45.84  (0s)
+linear       {"alpha": 10000}                                 MAE   48.65  (0s)
+esn          {"alpha": 1, "rho": 0.5, "leak": 0.3}            MAE   54.33  (2s)
+esn          {"alpha": 1, "rho": 0.5, "leak": 1.0}            MAE   48.82  (2s)
+esn          {"alpha": 1, "rho": 0.9, "leak": 0.3}            MAE   64.29  (2s)
+esn          {"alpha": 1, "rho": 0.9, "leak": 1.0}            MAE   59.13  (2s)
+esn          {"alpha": 10, "rho": 0.5, "leak": 0.3}           MAE   43.46  (2s)
+esn          {"alpha": 10, "rho": 0.5, "leak": 1.0}           MAE   42.83  (2s)
+esn          {"alpha": 10, "rho": 0.9, "leak": 0.3}           MAE   43.85  (2s)
+esn          {"alpha": 10, "rho": 0.9, "leak": 1.0}           MAE   43.76  (2s)
+esn          {"alpha": 100, "rho": 0.5, "leak": 0.3}          MAE   40.57  (2s)
+esn          {"alpha": 100, "rho": 0.5, "leak": 1.0}          MAE   40.45  (2s)
+esn          {"alpha": 100, "rho": 0.9, "leak": 0.3}          MAE   40.93  (2s)
+esn          {"alpha": 100, "rho": 0.9, "leak": 1.0}          MAE   40.19  (2s)
+esn          {"alpha": 300, "rho": 0.5, "leak": 0.3}          MAE   40.57  (2s)
+esn          {"alpha": 300, "rho": 0.5, "leak": 1.0}          MAE   40.30  (2s)
+esn          {"alpha": 300, "rho": 0.9, "leak": 0.3}          MAE   40.92  (2s)
+esn          {"alpha": 300, "rho": 0.9, "leak": 1.0}          MAE   40.10  (2s)
+esn          {"alpha": 1000, "rho": 0.5, "leak": 0.3}         MAE   41.77  (2s)
+esn          {"alpha": 1000, "rho": 0.5, "leak": 1.0}         MAE   41.24  (2s)
+esn          {"alpha": 1000, "rho": 0.9, "leak": 0.3}         MAE   42.06  (2s)
+esn          {"alpha": 1000, "rho": 0.9, "leak": 1.0}         MAE   41.20  (2s)
+pca8_linear  {"alpha": 0.1}                                   MAE   44.39  (0s)
+pca8_linear  {"alpha": 1}                                     MAE   44.12  (0s)
+pca8_linear  {"alpha": 10}                                    MAE   45.47  (0s)
+pca8_linear  {"alpha": 30}                                    MAE   50.28  (0s)
+pca8_linear  {"alpha": 100}                                   MAE   56.11  (0s)
+pca8_rff     {"alpha": 0.1, "scale": 1.0}                     MAE   54.32  (0s)
+pca8_rff     {"alpha": 0.1, "scale": 3.0}                     MAE   51.86  (0s)
+pca8_rff     {"alpha": 1, "scale": 1.0}                       MAE   44.67  (0s)
+pca8_rff     {"alpha": 1, "scale": 3.0}                       MAE   51.71  (0s)
+pca8_rff     {"alpha": 10, "scale": 1.0}                      MAE   42.76  (0s)
+pca8_rff     {"alpha": 10, "scale": 3.0}                      MAE   50.84  (0s)
+pca8_rff     {"alpha": 30, "scale": 1.0}                      MAE   43.12  (0s)
+pca8_rff     {"alpha": 30, "scale": 3.0}                      MAE   50.36  (0s)
+pca8_rff     {"alpha": 100, "scale": 1.0}                     MAE   44.26  (0s)
+pca8_rff     {"alpha": 100, "scale": 3.0}                     MAE   50.28  (0s)
+pca8_qrc     {"alpha": 0.1, "tau": 0.5, "h": 0.5}             MAE   49.71  (1s)
+pca8_qrc     {"alpha": 0.1, "tau": 0.5, "h": 1.0}             MAE   47.49  (1s)
+pca8_qrc     {"alpha": 0.1, "tau": 1.0, "h": 0.5}             MAE   51.11  (1s)
+pca8_qrc     {"alpha": 0.1, "tau": 1.0, "h": 1.0}             MAE   47.75  (1s)
+pca8_qrc     {"alpha": 0.1, "tau": 2.0, "h": 0.5}             MAE   50.21  (1s)
+pca8_qrc     {"alpha": 0.1, "tau": 2.0, "h": 1.0}             MAE   47.82  (1s)
+pca8_qrc     {"alpha": 1, "tau": 0.5, "h": 0.5}               MAE   46.02  (1s)
+pca8_qrc     {"alpha": 1, "tau": 0.5, "h": 1.0}               MAE   44.81  (1s)
+pca8_qrc     {"alpha": 1, "tau": 1.0, "h": 0.5}               MAE   45.62  (1s)
+pca8_qrc     {"alpha": 1, "tau": 1.0, "h": 1.0}               MAE   45.56  (1s)
+pca8_qrc     {"alpha": 1, "tau": 2.0, "h": 0.5}               MAE   46.04  (1s)
+pca8_qrc     {"alpha": 1, "tau": 2.0, "h": 1.0}               MAE   47.95  (1s)
+pca8_qrc     {"alpha": 10, "tau": 0.5, "h": 0.5}              MAE   43.68  (1s)
+pca8_qrc     {"alpha": 10, "tau": 0.5, "h": 1.0}              MAE   45.36  (1s)
+pca8_qrc     {"alpha": 10, "tau": 1.0, "h": 0.5}              MAE   43.63  (1s)
+pca8_qrc     {"alpha": 10, "tau": 1.0, "h": 1.0}              MAE   47.66  (1s)
+pca8_qrc     {"alpha": 10, "tau": 2.0, "h": 0.5}              MAE   44.41  (1s)
+pca8_qrc     {"alpha": 10, "tau": 2.0, "h": 1.0}              MAE   51.52  (1s)
+pca8_qrc     {"alpha": 30, "tau": 0.5, "h": 0.5}              MAE   43.11  (1s)
+pca8_qrc     {"alpha": 30, "tau": 0.5, "h": 1.0}              MAE   47.83  (1s)
+pca8_qrc     {"alpha": 30, "tau": 1.0, "h": 0.5}              MAE   43.80  (1s)
+pca8_qrc     {"alpha": 30, "tau": 1.0, "h": 1.0}              MAE   50.55  (1s)
+pca8_qrc     {"alpha": 30, "tau": 2.0, "h": 0.5}              MAE   46.44  (1s)
+pca8_qrc     {"alpha": 30, "tau": 2.0, "h": 1.0}              MAE   53.90  (1s)
+pca8_qrc     {"alpha": 100, "tau": 0.5, "h": 0.5}             MAE   45.23  (1s)
+pca8_qrc     {"alpha": 100, "tau": 0.5, "h": 1.0}             MAE   51.57  (1s)
+pca8_qrc     {"alpha": 100, "tau": 1.0, "h": 0.5}             MAE   47.62  (1s)
+pca8_qrc     {"alpha": 100, "tau": 1.0, "h": 1.0}             MAE   54.46  (1s)
+pca8_qrc     {"alpha": 100, "tau": 2.0, "h": 0.5}             MAE   51.59  (1s)
+pca8_qrc     {"alpha": 100, "tau": 2.0, "h": 1.0}             MAE   56.45  (1s)
+ensemble     ["lear", "lgbm", "esn"]                          MAE   37.76
+{
+  "naive_d1": {},
+  "naive_d7": {},
+  "lear": {},
+  "lgbm": {
+    "n_estimators": 600
+  },
+  "linear": {
+    "alpha": 1000
+  },
+  "esn": {
+    "alpha": 300,
+    "rho": 0.9,
+    "leak": 1.0
+  },
+  "pca8_linear": {
+    "alpha": 1
+  },
+  "pca8_rff": {
+    "alpha": 10,
+    "scale": 1.0
+  },
+  "pca8_qrc": {
+    "alpha": 30,
+    "tau": 0.5,
+    "h": 0.5
+  }
+}

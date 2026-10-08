@@ -1,0 +1,86 @@
+w   lear     {}                                               MAE   33.26
+w   lgbm     {"n_estimators": 300}                            MAE   34.82
+w   lgbm     {"n_estimators": 600}                            MAE   34.32
+w   linear   {"alpha": 1}                                     MAE   44.17
+w   linear   {"alpha": 10}                                    MAE   39.66
+w   linear   {"alpha": 100}                                   MAE   36.57
+w   linear   {"alpha": 1000}                                  MAE   36.45
+w   linear   {"alpha": 3000}                                  MAE   38.33
+w   linear   {"alpha": 10000}                                 MAE   42.10
+w   esn      {"alpha": 1, "rho": 0.5, "leak": 0.3}            MAE   46.14
+w   esn      {"alpha": 1, "rho": 0.5, "leak": 1.0}            MAE   49.82
+w   esn      {"alpha": 1, "rho": 0.9, "leak": 0.3}            MAE   48.26
+w   esn      {"alpha": 1, "rho": 0.9, "leak": 1.0}            MAE   52.48
+w   esn      {"alpha": 10, "rho": 0.5, "leak": 0.3}           MAE   37.78
+w   esn      {"alpha": 10, "rho": 0.5, "leak": 1.0}           MAE   39.42
+w   esn      {"alpha": 10, "rho": 0.9, "leak": 0.3}           MAE   38.15
+w   esn      {"alpha": 10, "rho": 0.9, "leak": 1.0}           MAE   40.03
+w   esn      {"alpha": 100, "rho": 0.5, "leak": 0.3}          MAE   34.46
+w   esn      {"alpha": 100, "rho": 0.5, "leak": 1.0}          MAE   35.10
+w   esn      {"alpha": 100, "rho": 0.9, "leak": 0.3}          MAE   34.60
+w   esn      {"alpha": 100, "rho": 0.9, "leak": 1.0}          MAE   35.26
+w   esn      {"alpha": 300, "rho": 0.5, "leak": 0.3}          MAE   34.23
+w   esn      {"alpha": 300, "rho": 0.5, "leak": 1.0}          MAE   34.42
+w   esn      {"alpha": 300, "rho": 0.9, "leak": 0.3}          MAE   34.29
+w   esn      {"alpha": 300, "rho": 0.9, "leak": 1.0}          MAE   34.42
+w   esn      {"alpha": 1000, "rho": 0.5, "leak": 0.3}         MAE   35.32
+w   esn      {"alpha": 1000, "rho": 0.5, "leak": 1.0}         MAE   35.14
+w   esn      {"alpha": 1000, "rho": 0.9, "leak": 0.3}         MAE   35.38
+w   esn      {"alpha": 1000, "rho": 0.9, "leak": 1.0}         MAE   35.09
+w   ensemble MAE   32.57
+nw  lear     {}                                               MAE   37.10
+nw  lgbm     {"n_estimators": 300}                            MAE   41.56
+nw  lgbm     {"n_estimators": 600}                            MAE   41.62
+nw  linear   {"alpha": 1}                                     MAE   46.22
+nw  linear   {"alpha": 10}                                    MAE   45.42
+nw  linear   {"alpha": 100}                                   MAE   44.70
+nw  linear   {"alpha": 1000}                                  MAE   44.82
+nw  linear   {"alpha": 3000}                                  MAE   45.61
+nw  linear   {"alpha": 10000}                                 MAE   47.92
+nw  esn      {"alpha": 1, "rho": 0.5, "leak": 0.3}            MAE   51.63
+nw  esn      {"alpha": 1, "rho": 0.5, "leak": 1.0}            MAE   47.77
+nw  esn      {"alpha": 1, "rho": 0.9, "leak": 0.3}            MAE   58.39
+nw  esn      {"alpha": 1, "rho": 0.9, "leak": 1.0}            MAE   56.59
+nw  esn      {"alpha": 10, "rho": 0.5, "leak": 0.3}           MAE   41.78
+nw  esn      {"alpha": 10, "rho": 0.5, "leak": 1.0}           MAE   41.89
+nw  esn      {"alpha": 10, "rho": 0.9, "leak": 0.3}           MAE   42.16
+nw  esn      {"alpha": 10, "rho": 0.9, "leak": 1.0}           MAE   42.16
+nw  esn      {"alpha": 100, "rho": 0.5, "leak": 0.3}          MAE   39.37
+nw  esn      {"alpha": 100, "rho": 0.5, "leak": 1.0}          MAE   39.43
+nw  esn      {"alpha": 100, "rho": 0.9, "leak": 0.3}          MAE   39.74
+nw  esn      {"alpha": 100, "rho": 0.9, "leak": 1.0}          MAE   39.07
+nw  esn      {"alpha": 300, "rho": 0.5, "leak": 0.3}          MAE   39.43
+nw  esn      {"alpha": 300, "rho": 0.5, "leak": 1.0}          MAE   39.28
+nw  esn      {"alpha": 300, "rho": 0.9, "leak": 0.3}          MAE   39.83
+nw  esn      {"alpha": 300, "rho": 0.9, "leak": 1.0}          MAE   39.11
+nw  esn      {"alpha": 1000, "rho": 0.5, "leak": 0.3}         MAE   40.79
+nw  esn      {"alpha": 1000, "rho": 0.5, "leak": 1.0}         MAE   40.37
+nw  esn      {"alpha": 1000, "rho": 0.9, "leak": 0.3}         MAE   41.11
+nw  esn      {"alpha": 1000, "rho": 0.9, "leak": 1.0}         MAE   40.34
+nw  ensemble MAE   37.45
+{
+  "lear_w": {},
+  "lgbm_w": {
+    "n_estimators": 600
+  },
+  "linear_w": {
+    "alpha": 1000
+  },
+  "esn_w": {
+    "alpha": 300,
+    "rho": 0.5,
+    "leak": 0.3
+  },
+  "lear_nw": {},
+  "lgbm_nw": {
+    "n_estimators": 300
+  },
+  "linear_nw": {
+    "alpha": 100
+  },
+  "esn_nw": {
+    "alpha": 100,
+    "rho": 0.9,
+    "leak": 1.0
+  }
+}

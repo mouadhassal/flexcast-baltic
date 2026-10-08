@@ -1,0 +1,28 @@
+{
+  "naive_d1": {},
+  "naive_d7": {},
+  "lear": {},
+  "lgbm": {
+    "n_estimators": 600
+  },
+  "linear": {
+    "alpha": 1000
+  },
+  "esn": {
+    "alpha": 300,
+    "rho": 0.9,
+    "leak": 1.0
+  },
+  "pca8_linear": {
+    "alpha": 1
+  },
+  "pca8_rff": {
+    "alpha": 10,
+    "scale": 1.0
+  },
+  "pca8_qrc": {
+    "alpha": 30,
+    "tau": 0.5,
+    "h": 0.5
+  }
+}

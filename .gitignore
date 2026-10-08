@@ -1,0 +1,7 @@
+.venv/
+__pycache__/
+.pytest_cache/
+*.pyc
+# private: your emails, interview notes and the proposal are not for the public repo
+outreach/
+proposal/

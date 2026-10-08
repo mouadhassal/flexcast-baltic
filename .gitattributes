@@ -1,0 +1,4 @@
+# Keep LF everywhere so the SHA-256 hashes of the pre-registrations and frozen configs
+# match on every machine (Windows autocrlf would otherwise change the bytes).
+* text=auto eol=lf
+*.png binary
