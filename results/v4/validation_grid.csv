@@ -1,0 +1,22 @@
+model,config,val_mae,val_capture_pct,failed
+asinh_ridge_w,"{""alpha"": 300, ""epochs"": 0}",35.71465885196304,65.20783264928683,False
+asinh_ridge_w,"{""alpha"": 1000, ""epochs"": 0}",36.39088856193227,64.72928422223548,False
+asinh_ridge_w,"{""alpha"": 3000, ""epochs"": 0}",38.3490589889446,61.86947495552824,False
+spo_asinh_w,"{""alpha"": 300, ""lr"": 0.003, ""epochs"": 10, ""mu"": 0.05}",43.123948468737694,63.82271136857492,False
+spo_asinh_w,"{""alpha"": 300, ""lr"": 0.003, ""epochs"": 30, ""mu"": 0.05}",43.858500023223534,64.07287515709162,False
+spo_asinh_w,"{""alpha"": 300, ""lr"": 0.01, ""epochs"": 10, ""mu"": 0.05}",58.326798120993516,50.737612667498446,False
+spo_asinh_w,"{""alpha"": 300, ""lr"": 0.01, ""epochs"": 30, ""mu"": 0.05}",,,True
+spo_asinh_w,"{""alpha"": 300, ""lr"": 0.03, ""epochs"": 10, ""mu"": 0.05}",,,True
+spo_asinh_w,"{""alpha"": 300, ""lr"": 0.03, ""epochs"": 30, ""mu"": 0.05}",,,True
+spo_asinh_w,"{""alpha"": 1000, ""lr"": 0.003, ""epochs"": 10, ""mu"": 0.05}",41.84963662733783,63.65008029996045,False
+spo_asinh_w,"{""alpha"": 1000, ""lr"": 0.003, ""epochs"": 30, ""mu"": 0.05}",42.81136638995798,62.68765750418048,False
+spo_asinh_w,"{""alpha"": 1000, ""lr"": 0.01, ""epochs"": 10, ""mu"": 0.05}",48.81830597280356,53.65240745567763,False
+spo_asinh_w,"{""alpha"": 1000, ""lr"": 0.01, ""epochs"": 30, ""mu"": 0.05}",,,True
+spo_asinh_w,"{""alpha"": 1000, ""lr"": 0.03, ""epochs"": 10, ""mu"": 0.05}",,,True
+spo_asinh_w,"{""alpha"": 1000, ""lr"": 0.03, ""epochs"": 30, ""mu"": 0.05}",,,True
+spo_asinh_w,"{""alpha"": 3000, ""lr"": 0.003, ""epochs"": 10, ""mu"": 0.05}",41.54471280397349,62.13737476512748,False
+spo_asinh_w,"{""alpha"": 3000, ""lr"": 0.003, ""epochs"": 30, ""mu"": 0.05}",42.12286378220169,61.513396255370466,False
+spo_asinh_w,"{""alpha"": 3000, ""lr"": 0.01, ""epochs"": 10, ""mu"": 0.05}",53.87648791324995,51.248589539854486,False
+spo_asinh_w,"{""alpha"": 3000, ""lr"": 0.01, ""epochs"": 30, ""mu"": 0.05}",,,True
+spo_asinh_w,"{""alpha"": 3000, ""lr"": 0.03, ""epochs"": 10, ""mu"": 0.05}",,,True
+spo_asinh_w,"{""alpha"": 3000, ""lr"": 0.03, ""epochs"": 30, ""mu"": 0.05}",,,True

@@ -105,6 +105,58 @@ class SPOLinear:
         return self.sc.transform(X.to_numpy()) @ self.W + self.b
 
 
+class SPOAsinh:
+    """v4: SPO+ fine-tuning of the stronger model - a linear model in the variance-stabilised
+    space z = asinh((p - med) / mad), so prices are p = med + mad * sinh(z). The SPO+
+    subgradient w.r.t. p is pushed through the chain rule: dL/dz = dL/dp * mad * cosh(z).
+    epochs=0 gives the warm start alone (the asinh ridge), which is the control."""
+    name = "spo_asinh"
+
+    def __init__(self, alpha: float = 1000.0, lr: float = 0.01, epochs: int = 10, mu: float = 0.05,
+                 window: int = 728, batch: int = 64, seed: int = 0):
+        self.alpha, self.lr, self.epochs, self.mu = alpha, lr, epochs, mu
+        self.window, self.batch, self.seed = window, batch, seed
+        self.dp = BatchDP()
+
+    def fit(self, X, Y):
+        Xw, Yw = X.to_numpy()[-self.window:], Y.to_numpy()[-self.window:]
+        self.med = float(np.median(Yw))
+        self.mad = float(np.median(np.abs(Yw - self.med))) or 1.0
+        Zw = np.arcsinh((Yw - self.med) / self.mad)
+        self.sc = StandardScaler().fit(Xw)
+        F = self.sc.transform(Xw)
+        warm = Ridge(alpha=self.alpha).fit(F, Zw)
+        W, b = warm.coef_.T.copy(), warm.intercept_.copy()
+        W0 = warm.coef_.T.copy()
+        x_true = self.dp.solve(Yw)
+        rng = np.random.default_rng(self.seed)
+        mW, vW, mb, vb = np.zeros_like(W), np.zeros_like(W), np.zeros_like(b), np.zeros_like(b)
+        b1, b2, eps, k = 0.9, 0.999, 1e-8, 0
+        for _ in range(self.epochs):
+            order = rng.permutation(len(F))
+            for i in range(0, len(F), self.batch):
+                idx = order[i:i + self.batch]
+                f, y, zt = F[idx], Yw[idx], Zw[idx]
+                z = f @ W + b
+                p_hat = self.med + self.mad * np.sinh(z)
+                gp = 2 * (x_true[idx] - self.dp.solve(2 * p_hat - y))          # SPO+ wrt prices
+                gz = gp * self.mad * np.cosh(z) / self.mad                      # chain rule, per-MAD units
+                gz = gz + self.mu * 2 * (z - zt)                                # keep the fit sensible
+                gW = f.T @ gz / len(idx) + self.alpha / len(F) * (W - W0)
+                gb = gz.mean(axis=0)
+                k += 1
+                for P, G, m, v in ((W, gW, mW, vW), (b, gb, mb, vb)):
+                    m *= b1; m += (1 - b1) * G
+                    v *= b2; v += (1 - b2) * G * G
+                    P -= self.lr * (m / (1 - b1 ** k)) / (np.sqrt(v / (1 - b2 ** k)) + eps)
+        self.W, self.b = W, b
+        return self
+
+    def predict(self, X):
+        z = self.sc.transform(X.to_numpy()) @ self.W + self.b
+        return self.med + self.mad * np.sinh(z)
+
+
 class RidgeRaw:
     """The warm start alone: ridge on the same features, squared error, raw prices.
     Comparing SPOLinear with this isolates the effect of training for profit."""

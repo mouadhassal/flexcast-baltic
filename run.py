@@ -254,6 +254,10 @@ def figures():
                  ("v2 linear\n(+ weather forecasts)", v3m["linear_w"], "tab:blue"),
                  ("v3 ridge, trained on error", v3m["ridge_raw_w"], "tab:orange"),
                  ("v3 same model,\ntrained on profit (SPO+)", v3m["spo_w"], "tab:green")]
+        if (V4 / "test_metrics.csv").exists():
+            v4m = pd.read_csv(V4 / "test_metrics.csv").set_index("model")["capture_pct"]
+            items += [("v4 asinh ridge, trained on error", v4m["asinh_ridge_w"], "tab:orange"),
+                      ("v4 same model, SPO+\n(unstable, see paper)", v4m["spo_asinh_w"], "tab:red")]
         fig, ax = plt.subplots(figsize=(8, 4.4))
         ax.barh([i[0] for i in items][::-1], [i[1] for i in items][::-1], color=[i[2] for i in items][::-1])
         ax.axvline(v3m["trailing_28d_profile"], color="black", ls="--", lw=1)
@@ -261,7 +265,7 @@ def figures():
             ax.text(v + 0.5, k, f"{v:.1f}%", va="center", fontsize=8)
         ax.set_xlim(0, 80)
         ax.set_xlabel("share of perfect-foresight battery profit, test window Apr-Oct 2026 (%)")
-        ax.set_title("1 MW / 2 MWh battery, Estonian day-ahead: what each step was worth")
+        ax.set_title("What each step was worth (1 MW / 2 MWh, EE day-ahead)")
         fig.tight_layout(); fig.savefig(figs / "study_summary.png", dpi=150); plt.close(fig)
     print("figures written to", figs)
 
@@ -443,6 +447,92 @@ def test_p():
     print(json.dumps(hyp, indent=2))
 
 
+# ---------------- v4: SPO+ on the stronger (asinh) model (see PREREGISTRATION_v4.md) ----------------
+V4 = RESULTS / "v4"
+
+
+def grid_v4():
+    return {
+        "asinh_ridge_w": [{"alpha": a, "epochs": 0} for a in (300, 1000, 3000)],
+        "spo_asinh_w": [{"alpha": a, "lr": lr, "epochs": ep, "mu": 0.05}
+                        for a in (300, 1000, 3000) for lr in (0.003, 0.01, 0.03) for ep in (10, 30)],
+    }
+
+
+def factory_v4(name, cfg):
+    from flexcast.decision import SPOAsinh
+    return lambda: SPOAsinh(alpha=cfg["alpha"], lr=cfg.get("lr", 0.0), epochs=cfg["epochs"], mu=cfg.get("mu", 0.05))
+
+
+def validate_v4():
+    Xs, Y, _ = load_v2()
+    X = Xs["w"]
+    y = Y.loc[VAL[0]:VAL[1]].to_numpy()
+    pf = battery.backtest(y, y).sum()
+    rows, chosen = [], {}
+    for name, cfgs in grid_v4().items():
+        best = None
+        for cfg in cfgs:
+            t0 = time.time()
+            f = rolling(factory_v4(name, cfg), X, Y, *VAL).to_numpy()
+            try:  # a diverged model (non-finite or absurd prices) is a failed config, never selectable
+                if not np.all(np.isfinite(f)) or np.abs(f).max() > 1e5:
+                    raise RuntimeError("diverged")
+                cap = 100 * battery.backtest(f, y).sum() / pf
+                mae_v = evaluate.mae(f, y)
+            except RuntimeError:
+                cap, mae_v = float("nan"), float("nan")
+            rows.append({"model": name, "config": json.dumps(cfg), "val_mae": mae_v, "val_capture_pct": cap,
+                         "failed": bool(np.isnan(cap))})
+            print(f"{name:14s} {json.dumps(cfg):62s} MAE {mae_v:6.2f} capture {cap:5.1f}% ({time.time() - t0:.0f}s)", flush=True)
+            if not np.isnan(cap) and (best is None or cap > best[0]):
+                best = (cap, cfg)
+        chosen[name] = best[1]
+    V4.mkdir(parents=True, exist_ok=True)
+    pd.DataFrame(rows).to_csv(V4 / "validation_grid.csv", index=False)
+    (V4 / "chosen_config.json").write_text(json.dumps(chosen, indent=2))
+    print(json.dumps(chosen, indent=2))
+
+
+def test_v4():
+    sha = hashlib.sha256((ROOT / "PREREGISTRATION_v4.md").read_bytes()).hexdigest()
+    chosen = json.loads((V4 / "chosen_config.json").read_text())
+    Xs, Y, _ = load_v2()
+    yt = Y.loc[TEST[0]:TEST[1]]
+    y = yt.to_numpy()
+    fc = {k: rolling(factory_v4(k, cfg), Xs["w"], Y, *TEST).to_numpy() for k, cfg in chosen.items()}
+    v3 = lambda k: pd.read_csv(V3 / "test" / f"forecast_{k}.csv", index_col=0, parse_dates=True).loc[yt.index].to_numpy()
+    for k in ("linear_w", "ensemble_w", "spo_w", "ridge_raw_w", "trailing_28d_profile", "naive_d1"):
+        fc[k] = v3(k)
+    out = V4 / "test"
+    out.mkdir(parents=True, exist_ok=True)
+    pf = battery.backtest(y, y)
+    prof = {k: battery.backtest(f, y) for k, f in fc.items()}
+    rows = []
+    for k, f in fc.items():
+        pd.DataFrame(f, index=yt.index, columns=yt.columns).to_csv(out / f"forecast_{k}.csv")
+        pd.Series(prof[k], index=yt.index).to_csv(out / f"profit_{k}.csv")
+        rows.append({"model": k, "mae": evaluate.mae(f, y), "capture_pct": 100 * prof[k].sum() / pf.sum(),
+                     "profit_eur": prof[k].sum(), "losing_days": int((prof[k] < 0).sum())})
+    table = pd.DataFrame(rows).sort_values("capture_pct", ascending=False)
+    table.to_csv(V4 / "test_metrics.csv", index=False)
+
+    def ci(a):
+        return dict(zip(("mean", "ci_lo", "ci_hi"), evaluate.bootstrap_mean_ci(a)))
+
+    hyp = {
+        "Q1_eur_per_day_spo_asinh_minus_asinh_ridge": ci(prof["spo_asinh_w"] - prof["asinh_ridge_w"]),
+        "Q2_eur_per_day_spo_asinh_minus_profile": ci(prof["spo_asinh_w"] - prof["trailing_28d_profile"]),
+        "extra_eur_per_day_spo_asinh_minus_naive_d1": ci(prof["spo_asinh_w"] - prof["naive_d1"]),
+        "extra_mae_spo_asinh_minus_asinh_ridge": ci(evaluate.daily_abs_err(fc["spo_asinh_w"], y)
+                                                    - evaluate.daily_abs_err(fc["asinh_ridge_w"], y)),
+    }
+    (V4 / "test_summary.json").write_text(json.dumps({"preregistration_v4_sha256": sha, "test_window": TEST,
+                                                      "chosen_config": chosen, "hypotheses": hyp}, indent=2))
+    print(table.round(2).to_string(index=False))
+    print(json.dumps(hyp, indent=2))
+
+
 # ---------------- live: the clean out-of-sample test that grows every day ----------------
 def live():
     """Score the frozen v1/v2/v3 configs on delivery days after the test window (9 Oct 2026 on),
@@ -495,4 +585,5 @@ def live():
 if __name__ == "__main__":
     {"validate": validate, "test": test, "figures": figures,
      "validate_w": validate_w, "test_w": test_w,
-     "validate_p": validate_p, "test_p": test_p, "live": live}[sys.argv[1]]()
+     "validate_p": validate_p, "test_p": test_p,
+     "validate_v4": validate_v4, "test_v4": test_v4, "live": live}[sys.argv[1]]()

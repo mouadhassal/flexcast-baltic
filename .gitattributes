@@ -2,3 +2,6 @@
 # match on every machine (Windows autocrlf would otherwise change the bytes).
 * text=auto eol=lf
 *.png binary
+# Frozen configs are hashed byte-for-byte in the pre-registrations: store them exactly as written.
+results/**/chosen_config.json -text
+results/chosen_config.json -text

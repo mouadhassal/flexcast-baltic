@@ -212,6 +212,24 @@ Hyperparameters were picked by validation profit. Because the first grid's alpha
 
 ![study summary](../figures/study_summary.png)
 
+## 3d. v4: SPO+ on the stronger model, and the quantum bid benchmark
+
+Both are pre-registered (`PREREGISTRATION_v4.md`, `PREREGISTRATION_quantum.md`). Full details are in the paper, `paper/flexcast_paper.pdf`.
+
+**v4 (failed).** I put SPO+ on the asinh-space ridge, which captures 66.4% on its own. It was numerically unstable: cosh(z) amplifies the gradient on price spikes, and 9 of 18 validation configs diverged. The best stable config lost to its own warm start on test: −€4.36/day (CI −9.61 to +0.32), MAE +€4.6/MWh. Fixes (gradient clipping, a bounded link) are future work and were not tuned on this window.
+
+**Quantum vs classical for mFRR bid assembly (predictions held).** The task is choosing which on/off assets form a 1 MW bid at minimum cost, as a QUBO. There were 50 synthetic portfolios with 8–16 assets.
+
+| assets | simulated annealing | QAOA p=3 (noiseless, best of 1,000 shots) | QAOA P(optimum) vs random |
+|---|---|---|---|
+| 8 | 100% | 100% | 2.6× |
+| 12 | 100% | 50% | 3.0× |
+| 16 | 80% | 10% | 3.3× |
+
+An exact MILP (HiGHS) proves the optimum for 2,000 assets in 0.32 s median. QAOA's constant ~3× amplification cannot keep up with a search space that doubles per asset.
+
+![quantum bids](../figures/quantum_bids.png)
+
 ## 4. Limits
 
 - **Day-ahead only.** There is no intraday re-trading, no mFRR, aFRR or FCR, and no bid curves. Elering's open balancing endpoint returns empty values, and the Baltic Transparency Dashboard blocked automated download.

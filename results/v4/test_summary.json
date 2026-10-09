@@ -1,0 +1,41 @@
+{
+  "preregistration_v4_sha256": "e3ca2e577c262daa5f6c16ab05e8beec717108f54d270355cf9842cdffc71252",
+  "test_window": [
+    "2026-04-01",
+    "2026-10-08"
+  ],
+  "chosen_config": {
+    "asinh_ridge_w": {
+      "alpha": 300,
+      "epochs": 0
+    },
+    "spo_asinh_w": {
+      "alpha": 300,
+      "lr": 0.003,
+      "epochs": 30,
+      "mu": 0.05
+    }
+  },
+  "hypotheses": {
+    "Q1_eur_per_day_spo_asinh_minus_asinh_ridge": {
+      "mean": -4.358666483765186,
+      "ci_lo": -9.610153430254769,
+      "ci_hi": 0.3239895149522173
+    },
+    "Q2_eur_per_day_spo_asinh_minus_profile": {
+      "mean": -1.754122254299512,
+      "ci_lo": -8.343366415848358,
+      "ci_hi": 4.252574076653675
+    },
+    "extra_eur_per_day_spo_asinh_minus_naive_d1": {
+      "mean": 71.24915287371479,
+      "ci_lo": 52.158973699894,
+      "ci_hi": 99.55646761910418
+    },
+    "extra_mae_spo_asinh_minus_asinh_ridge": {
+      "mean": 4.641513467181671,
+      "ci_lo": 2.899746634247536,
+      "ci_hi": 6.128531616727642
+    }
+  }
+}

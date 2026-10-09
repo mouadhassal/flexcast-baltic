@@ -1,5 +1,15 @@
 # flexcast: what is a day-ahead price forecast worth to an Estonian battery?
 
+**Paper:** [paper/flexcast_paper.pdf](paper/flexcast_paper.pdf), *What Is a Price Forecast Worth to a Battery? A Pre-Registered, Decision-Focused Study of Day-Ahead Forecasting for Baltic Flexibility, with a Quantum-Optimisation Benchmark for mFRR Bid Assembly.* Five pre-registered experiments: v1, v2 weather, v3 and v4 profit training, and quantum bids.
+
+**Quantum vs classical for mFRR bid assembly** (`quantum_bids.py`, pre-registered). The task is choosing which on/off assets form a 1 MW bid at minimum cost, posed as a QUBO.
+
+- **QAOA (p ≤ 3, exact noiseless simulation):** it samples the optimal bid about 3× more often than random guessing. Its success falls from 100% at 8 assets to 10% at 16.
+- **Simulated annealing:** solves 96% of instances.
+- **Exact MILP:** proves optimality for **2,000 assets in 0.32 s**.
+
+![quantum bids](figures/quantum_bids.png)
+
 This project forecasts tomorrow's 24 hourly Estonian (EE) day-ahead prices using only what is known at the 12:00 CET gate closure. It then schedules a 1 MW / 2 MWh battery on each forecast and settles the result at the real prices.
 
 The test window is 191 days (1 Apr – 8 Oct 2026). It was pre-registered and run once.
@@ -25,6 +35,8 @@ The test window is 191 days (1 Apr – 8 Oct 2026). It was pre-registered and ru
 
 - **Profit:** **+€6.56 per day per MW (95% CI 3.5–9.6)**, capture 61.7% → 64.8%, at a slightly worse MAE (+€0.35). It is the first change in the study that moved euros rather than accuracy.
 - **Against the profile:** built on that weak base model it still ties the 28-day profile (−€0.94/day, CI −6.2 to +3.8). Putting it on the stronger model is the next experiment.
+
+**v4: SPO+ on the stronger asinh model failed (pre-registered).** It was numerically unstable: 9 of 18 configs diverged, and the best lost €4.36/day to its own starting point. The cause and the fix are in the paper.
 
 ![study summary](figures/study_summary.png)
 
@@ -52,6 +64,9 @@ python run.py validate_w  # v2: weather forecasts (Open-Meteo, cached in data/ra
 python run.py test_w      # needs PREREGISTRATION_v2.md
 python run.py validate_p  # v3: profit-trained (SPO+) grid, about 30 min
 python run.py test_p
+python run.py validate_v4 && python run.py test_v4    # v4: SPO+ on the asinh model
+python quantum_bids.py    # quantum vs classical bid assembly (about 10 min); --figure for the chart
+python paper/build_pdf.py # rebuild the paper (needs `pip install markdown` and Edge/Chrome)
 python run.py live        # frozen models on new days after 8 Oct 2026
 pytest                    # battery LP, quantum reservoir, and a no-look-ahead test for features
 ```
@@ -70,6 +85,8 @@ src/flexcast/
   battery.py    LP schedule (scipy/HiGHS) and settlement at actual prices
   weather.py    archived day-ahead weather forecasts (Open-Meteo, issued 48 h ahead)
   decision.py   batched DP battery solver + SPO+ training (forecast trained for profit)
+  qubo.py       mFRR bid assembly as a QUBO: exhaustive, simulated annealing, QAOA statevector, MILP
+paper/          the research paper (Markdown source, PDF, build script)
   backtest.py   rolling-origin evaluation, weekly refits
   evaluate.py   MAE/RMSE, moving-block bootstrap CIs, interval coverage
 run.py          validate / test / figures
@@ -83,7 +100,7 @@ tests/          unit tests
 ## Honest notes
 
 - **Market scope:** day-ahead only. There is no mFRR/aFRR/FCR, intraday or bid-curve modelling yet. Weather is a 7-point public proxy.
-- **Reused test window:** v2 and v3 are second and third looks at the v1 test window, as their pre-registrations say. `run.py live` is the clean test going forward.
+- **Reused test window:** v2, v3 and v4 are later looks at the v1 test window, as their pre-registrations say. `run.py live` is the clean test going forward.
 - **Simplified battery:** each day is optimised on its own, with a flat €5/MWh degradation cost and no grid fees.
 - **Hourly resolution:** quarter-hour prices (since 1 Oct 2025) are averaged to the hour.
 - **Research prototype:** this has tests, but it is not a production service.

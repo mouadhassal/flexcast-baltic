@@ -1,0 +1,31 @@
+               model   mae  capture_pct  profit_eur  losing_days
+            linear_w 31.35        67.12    27487.33           12
+       asinh_ridge_w 30.95        66.42    27201.21           14
+          ensemble_w 29.31        66.29    27148.09           16
+trailing_28d_profile 39.91        65.20    26703.74           16
+               spo_w 30.75        64.77    26524.71           16
+         spo_asinh_w 35.59        64.39    26368.70           16
+         ridge_raw_w 30.40        61.71    25271.85           18
+            naive_d1 42.27        31.16    12760.11           44
+{
+  "Q1_eur_per_day_spo_asinh_minus_asinh_ridge": {
+    "mean": -4.358666483765186,
+    "ci_lo": -9.610153430254769,
+    "ci_hi": 0.3239895149522173
+  },
+  "Q2_eur_per_day_spo_asinh_minus_profile": {
+    "mean": -1.754122254299512,
+    "ci_lo": -8.343366415848358,
+    "ci_hi": 4.252574076653675
+  },
+  "extra_eur_per_day_spo_asinh_minus_naive_d1": {
+    "mean": 71.24915287371479,
+    "ci_lo": 52.158973699894,
+    "ci_hi": 99.55646761910418
+  },
+  "extra_mae_spo_asinh_minus_asinh_ridge": {
+    "mean": 4.641513467181671,
+    "ci_lo": 2.899746634247536,
+    "ci_hi": 6.128531616727642
+  }
+}

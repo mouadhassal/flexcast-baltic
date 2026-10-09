@@ -1,0 +1,33 @@
+asinh_ridge_w  {"alpha": 300, "epochs": 0}                                    MAE  35.71 capture  65.2% (3s)
+asinh_ridge_w  {"alpha": 1000, "epochs": 0}                                   MAE  36.39 capture  64.7% (3s)
+asinh_ridge_w  {"alpha": 3000, "epochs": 0}                                   MAE  38.35 capture  61.9% (3s)
+spo_asinh_w    {"alpha": 300, "lr": 0.003, "epochs": 10, "mu": 0.05}          MAE  43.12 capture  63.8% (16s)
+spo_asinh_w    {"alpha": 300, "lr": 0.003, "epochs": 30, "mu": 0.05}          MAE  43.86 capture  64.1% (41s)
+spo_asinh_w    {"alpha": 300, "lr": 0.01, "epochs": 10, "mu": 0.05}           MAE  58.33 capture  50.7% (17s)
+spo_asinh_w    {"alpha": 300, "lr": 0.01, "epochs": 30, "mu": 0.05}           MAE    nan capture   nan% (41s)
+spo_asinh_w    {"alpha": 300, "lr": 0.03, "epochs": 10, "mu": 0.05}           MAE    nan capture   nan% (16s)
+spo_asinh_w    {"alpha": 300, "lr": 0.03, "epochs": 30, "mu": 0.05}           MAE    nan capture   nan% (41s)
+spo_asinh_w    {"alpha": 1000, "lr": 0.003, "epochs": 10, "mu": 0.05}         MAE  41.85 capture  63.7% (17s)
+spo_asinh_w    {"alpha": 1000, "lr": 0.003, "epochs": 30, "mu": 0.05}         MAE  42.81 capture  62.7% (42s)
+spo_asinh_w    {"alpha": 1000, "lr": 0.01, "epochs": 10, "mu": 0.05}          MAE  48.82 capture  53.7% (17s)
+spo_asinh_w    {"alpha": 1000, "lr": 0.01, "epochs": 30, "mu": 0.05}          MAE    nan capture   nan% (41s)
+spo_asinh_w    {"alpha": 1000, "lr": 0.03, "epochs": 10, "mu": 0.05}          MAE    nan capture   nan% (16s)
+spo_asinh_w    {"alpha": 1000, "lr": 0.03, "epochs": 30, "mu": 0.05}          MAE    nan capture   nan% (39s)
+spo_asinh_w    {"alpha": 3000, "lr": 0.003, "epochs": 10, "mu": 0.05}         MAE  41.54 capture  62.1% (15s)
+spo_asinh_w    {"alpha": 3000, "lr": 0.003, "epochs": 30, "mu": 0.05}         MAE  42.12 capture  61.5% (38s)
+spo_asinh_w    {"alpha": 3000, "lr": 0.01, "epochs": 10, "mu": 0.05}          MAE  53.88 capture  51.2% (15s)
+spo_asinh_w    {"alpha": 3000, "lr": 0.01, "epochs": 30, "mu": 0.05}          MAE    nan capture   nan% (38s)
+spo_asinh_w    {"alpha": 3000, "lr": 0.03, "epochs": 10, "mu": 0.05}          MAE    nan capture   nan% (14s)
+spo_asinh_w    {"alpha": 3000, "lr": 0.03, "epochs": 30, "mu": 0.05}          MAE    nan capture   nan% (38s)
+{
+  "asinh_ridge_w": {
+    "alpha": 300,
+    "epochs": 0
+  },
+  "spo_asinh_w": {
+    "alpha": 300,
+    "lr": 0.003,
+    "epochs": 30,
+    "mu": 0.05
+  }
+}

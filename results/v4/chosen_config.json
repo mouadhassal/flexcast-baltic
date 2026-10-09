@@ -1,0 +1,12 @@
+{
+  "asinh_ridge_w": {
+    "alpha": 300,
+    "epochs": 0
+  },
+  "spo_asinh_w": {
+    "alpha": 300,
+    "lr": 0.003,
+    "epochs": 30,
+    "mu": 0.05
+  }
+}

@@ -1,0 +1,64 @@
+n= 8 seed=0 SA hit=True QAOA p3 hit=True p_opt=0.0099 (uniform 0.00391)
+n= 8 seed=1 SA hit=True QAOA p3 hit=True p_opt=0.0152 (uniform 0.00391)
+n= 8 seed=2 SA hit=True QAOA p3 hit=True p_opt=0.0101 (uniform 0.00391)
+n= 8 seed=3 SA hit=True QAOA p3 hit=True p_opt=0.0094 (uniform 0.00391)
+n= 8 seed=4 SA hit=True QAOA p3 hit=True p_opt=0.0106 (uniform 0.00391)
+n= 8 seed=5 SA hit=True QAOA p3 hit=True p_opt=0.0098 (uniform 0.00391)
+n= 8 seed=6 SA hit=True QAOA p3 hit=True p_opt=0.0108 (uniform 0.00391)
+n= 8 seed=7 SA hit=True QAOA p3 hit=True p_opt=0.0103 (uniform 0.00391)
+n= 8 seed=8 SA hit=True QAOA p3 hit=True p_opt=0.0102 (uniform 0.00391)
+n= 8 seed=9 SA hit=True QAOA p3 hit=True p_opt=0.0157 (uniform 0.00391)
+n=10 seed=0 SA hit=True QAOA p3 hit=True p_opt=0.0022 (uniform 0.00098)
+n=10 seed=1 SA hit=True QAOA p3 hit=True p_opt=0.0028 (uniform 0.00098)
+n=10 seed=2 SA hit=True QAOA p3 hit=True p_opt=0.0027 (uniform 0.00098)
+n=10 seed=3 SA hit=True QAOA p3 hit=True p_opt=0.0030 (uniform 0.00098)
+n=10 seed=4 SA hit=True QAOA p3 hit=True p_opt=0.0040 (uniform 0.00098)
+n=10 seed=5 SA hit=True QAOA p3 hit=True p_opt=0.0041 (uniform 0.00098)
+n=10 seed=6 SA hit=True QAOA p3 hit=True p_opt=0.0028 (uniform 0.00098)
+n=10 seed=7 SA hit=True QAOA p3 hit=False p_opt=0.0023 (uniform 0.00098)
+n=10 seed=8 SA hit=True QAOA p3 hit=True p_opt=0.0027 (uniform 0.00098)
+n=10 seed=9 SA hit=True QAOA p3 hit=True p_opt=0.0032 (uniform 0.00098)
+n=12 seed=0 SA hit=True QAOA p3 hit=False p_opt=0.0006 (uniform 0.00024)
+n=12 seed=1 SA hit=True QAOA p3 hit=False p_opt=0.0007 (uniform 0.00024)
+n=12 seed=2 SA hit=True QAOA p3 hit=False p_opt=0.0007 (uniform 0.00024)
+n=12 seed=3 SA hit=True QAOA p3 hit=True p_opt=0.0015 (uniform 0.00024)
+n=12 seed=4 SA hit=True QAOA p3 hit=True p_opt=0.0007 (uniform 0.00024)
+n=12 seed=5 SA hit=True QAOA p3 hit=True p_opt=0.0010 (uniform 0.00024)
+n=12 seed=6 SA hit=True QAOA p3 hit=True p_opt=0.0007 (uniform 0.00024)
+n=12 seed=7 SA hit=True QAOA p3 hit=True p_opt=0.0011 (uniform 0.00024)
+n=12 seed=8 SA hit=True QAOA p3 hit=False p_opt=0.0008 (uniform 0.00024)
+n=12 seed=9 SA hit=True QAOA p3 hit=False p_opt=0.0010 (uniform 0.00024)
+n=14 seed=0 SA hit=True QAOA p3 hit=False p_opt=0.0002 (uniform 0.00006)
+n=14 seed=1 SA hit=True QAOA p3 hit=False p_opt=0.0002 (uniform 0.00006)
+n=14 seed=2 SA hit=True QAOA p3 hit=True p_opt=0.0002 (uniform 0.00006)
+n=14 seed=3 SA hit=True QAOA p3 hit=True p_opt=0.0002 (uniform 0.00006)
+n=14 seed=4 SA hit=True QAOA p3 hit=False p_opt=0.0002 (uniform 0.00006)
+n=14 seed=5 SA hit=True QAOA p3 hit=True p_opt=0.0002 (uniform 0.00006)
+n=14 seed=6 SA hit=True QAOA p3 hit=True p_opt=0.0002 (uniform 0.00006)
+n=14 seed=7 SA hit=True QAOA p3 hit=True p_opt=0.0002 (uniform 0.00006)
+n=14 seed=8 SA hit=True QAOA p3 hit=False p_opt=0.0002 (uniform 0.00006)
+n=14 seed=9 SA hit=True QAOA p3 hit=False p_opt=0.0002 (uniform 0.00006)
+n=16 seed=0 SA hit=False QAOA p3 hit=False p_opt=0.0001 (uniform 0.00002)
+n=16 seed=1 SA hit=True QAOA p3 hit=False p_opt=0.0001 (uniform 0.00002)
+n=16 seed=2 SA hit=True QAOA p3 hit=False p_opt=0.0000 (uniform 0.00002)
+n=16 seed=3 SA hit=False QAOA p3 hit=False p_opt=0.0000 (uniform 0.00002)
+n=16 seed=4 SA hit=True QAOA p3 hit=True p_opt=0.0001 (uniform 0.00002)
+n=16 seed=5 SA hit=True QAOA p3 hit=False p_opt=0.0000 (uniform 0.00002)
+n=16 seed=6 SA hit=True QAOA p3 hit=False p_opt=0.0000 (uniform 0.00002)
+n=16 seed=7 SA hit=True QAOA p3 hit=False p_opt=0.0001 (uniform 0.00002)
+n=16 seed=8 SA hit=True QAOA p3 hit=False p_opt=0.0001 (uniform 0.00002)
+n=16 seed=9 SA hit=True QAOA p3 hit=False p_opt=0.0000 (uniform 0.00002)
+    sa_hit_rate  qaoa_p1_hit_rate  qaoa_p2_hit_rate  qaoa_p3_hit_rate  qaoa_p3_p_opt_median  uniform_p_opt  qaoa_p3_best_of_1000_ratio_median  qaoa_p3_expected_ratio_median  sa_seconds_median  qaoa_sim_seconds_median  qaoa_p3_amplification_vs_uniform
+n                                                                                                                                                                                                                                                         
+8           1.0               1.0               1.0               1.0                0.0103         0.0039                             1.0000                        70.3643             0.4095                   1.1538                            2.6284
+10          1.0               0.8               0.9               0.9                0.0028         0.0010                             1.0000                        75.6147             0.5018                   1.4645                            2.9063
+12          1.0               0.6               0.4               0.5                0.0007         0.0002                             1.0007                        87.2818             0.5678                   2.0463                            3.0465
+14          1.0               0.0               0.1               0.5                0.0002         0.0001                             1.0116                       148.8983             0.6508                   4.4897                            3.0127
+16          0.8               0.0               0.0               0.1                0.0001         0.0000                             1.1817                       233.0265             0.7237                  25.7862                            3.3088
+      median     max
+n                   
+50    0.0095  0.0331
+200   0.0387  0.0610
+500   0.0967  0.1642
+1000  0.1225  0.1567
+2000  0.3244  0.4899
